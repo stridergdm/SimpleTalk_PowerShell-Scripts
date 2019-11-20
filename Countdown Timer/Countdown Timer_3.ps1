@@ -4,7 +4,7 @@
 #Setup initial form
 $Counter_Form = New-Object System.Windows.Forms.Form
 $Counter_Form.Text = "Countdown Timer!"
-$Counter_Form.Width = 350
+$Counter_Form.Width = 450
 $Counter_Form.Height = 200
 $Counter_Form.WindowState = "Normal"
 
