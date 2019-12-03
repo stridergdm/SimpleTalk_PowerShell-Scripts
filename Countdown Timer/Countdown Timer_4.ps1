@@ -1,4 +1,6 @@
-﻿#Get monitor resolution of primary monitor
+﻿param([int]$delay=3, [string]$EventLabel = "This is a test")
+
+#Get monitor resolution of primary monitor
 
 $monitordetails = [System.Windows.Forms.SystemInformation]::PrimaryMonitorSize
 $monitorheight = $monitordetails.Height
@@ -43,11 +45,8 @@ $Counter_Form.Controls.Add($Counter_GetDelay_Label)
 
 
 $Counter_GetDelay_TextBox = New-Object System.Windows.Forms.TextBox
-#$Counter_GetDelay_TextBox.Width = 30
-#$Counter_GetDelay_TextBox.Height = 20
 $Counter_GetDelay_TextBox.AutoSize = $true 
 $Counter_GetDelay_TextBox.Text = $delay
-#$Counter_GetDelay_TextBox.Left = 80
 $Counter_GetDelay_TextBox.Left = $Counter_GetDelay_Label.Left + $Counter_GetDelay_Label.Width + 10
 $Counter_GetDelay_TextBox.Top = 5
 $Counter_Form.Controls.Add($Counter_GetDelay_TextBox)
@@ -65,8 +64,6 @@ $Counter_Event_Label.Font = $normalfont
 
 #Setup and handle the OK button
 $Counter_OKButton = New-Object System.Windows.Forms.Button
-#$Counter_OKButton.Width=50
-#$Counter_OKButton.Height=40
 $Counter_OKButton.AutoSize = $true 
 $Counter_OKButton.Text = "Ok"
 $Counter_OKButton.Left = 80
@@ -93,11 +90,9 @@ $Counter_OKButton.Add_Click({
 
         $Counter_LabelSize= [System.Windows.Forms.TextRenderer]::MeasureText($Counter_Label.Text , $normalfont) # we need this so we can figure where to put the countdown labeled, centered.
         $Counter_Label.Font = $normalfont
-        #$Counter_Label.Width = $Counter_LabelSize.Width + 10
-        #$Counter_Label.Height = 50
         $Counter_Label.AutoSize = $true
         $Counter_Label.Left = ($Counter_Form.Width/2)-($Counter_LabelSize.Width/2)  # We want it centered.
-        $Counter_Label.Top = $Counter_Form.Height * .3 # - 100   # We want it near the bottom of the screen.
+        $Counter_Label.Top = $Counter_Form.Height * .3 # We want it near the bottom of the screen.
     
         if ($delay -le 5)  # Now things are getting close, let's change the color and make it bolder and underline it
         { 
