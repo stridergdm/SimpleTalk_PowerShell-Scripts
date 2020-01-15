@@ -1,0 +1,1 @@
+﻿get-dbainstanceproperty -SqlInstance "killington\sqlexpress" -InstanceProperty NumberOfLogFiles 
