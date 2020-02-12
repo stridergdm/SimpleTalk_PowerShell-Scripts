@@ -1,0 +1,3 @@
+As noted, these are simply examples whipped up for a 5-10 minute lightning round talk on how to create a file of JSON objects 
+describing ones servers and how to read from the file and do something with the objects.
+It's not meant to be production level code.
