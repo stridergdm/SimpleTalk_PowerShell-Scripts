@@ -1,0 +1,1 @@
+write-host "this is a simple script"
