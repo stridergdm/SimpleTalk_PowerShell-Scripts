@@ -1,0 +1,1 @@
+﻿write-host "second script $(get-date)"
