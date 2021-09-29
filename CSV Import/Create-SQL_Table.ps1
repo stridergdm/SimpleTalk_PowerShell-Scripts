@@ -3,7 +3,7 @@
 $filename = "User_Database.csv"
 
 
-$first_line = get-content P:\$filename -First 1
+$first_line = get-content $filename -First 1
 
 $fields = $first_line.split(",").Replace('"','')
 
@@ -12,9 +12,14 @@ $table = "Create Table $object`_by_PowerShell
 " 
 foreach ($field in $fields)
 {
-    $table += "  $field nvarchar(100)
+    $table += "  $field nvarchar(100),
 "
 }
-$table += ")"
+$table = $table.TrimEnd(",
+")
+$table += "
+)"
+
+
 
 write-host $table

@@ -1,6 +1,6 @@
 "First_Name","Last_Name","City","Payment","Payment_Date","Notes"
 "Bruce","Wayne","Gotham","1,212.09","3/12/2021","Is a millionaire who's into bats."
-"Clark","Kent,Metropolis,"310.56","2/10/1999","Newspaper reporter who wears fake glasses."
+"Clark","Kent","Metropolis","310.56","2/10/1999","Newspaper reporter who wears fake glasses."
 "Diana","Prince","DC","$1,947.22","8/8/2015","Has her own plane, she claims. No one's seen it."
-"Hal","Jordan,Coast City,"$1,967.10","6/12/2020","Likes pretty jewelry"
+"Hal","Jordan",Coast City,"$1,967.10","6/12/2020","Likes pretty jewelry"
 "Oliver","Queen","Star City",,"6/13/2020","Rich dude with an arrow fetish"

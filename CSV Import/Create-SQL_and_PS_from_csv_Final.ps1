@@ -1,4 +1,4 @@
-﻿
+﻿param([parameter(mandatory)] $filename)
 
 $delimeter = ","
 $fielddelimeter = '"'
@@ -6,7 +6,7 @@ $object = "Users"
 
 $filename = "User_Database.csv"
 
-$first_line = get-content P:\$filename -First 1
+$first_line = get-content P:$filename -First 1
 
 $fields = $first_line.split($delimeter).Replace($fielddelimeter,'')
 
@@ -19,10 +19,13 @@ function create-Sql_table($object, $fields)
     " 
     foreach ($field in $fields)
     {
-        $table += "  $field nvarchar(100)
+        $table += "  $field nvarchar(100),
     "
     }
-    $table += ")"
+    $table = $table.TrimEnd(",
+    ")
+    $table += "
+    )"
 
     return $table
 }
@@ -30,7 +33,7 @@ function create-Sql_table($object, $fields)
 function create-Sql_Insert_Procedure($object, $fields)
 {
 
-    $procedure = "Create or Alter Procedure Insert_$object "
+    $procedure = "Create or Alter Procedure Insert_$object`_by_PowerShell "
     foreach ($field in $fields)
     {
         $procedure += "@$field nvarchar(100)`, 
@@ -42,10 +45,10 @@ function create-Sql_Insert_Procedure($object, $fields)
 
     $procedure += "
     AS
-    Insert into $object ("
+    Insert into $object`_by_PowerShell  ("
     foreach ($field in $fields)
     {
-        $procedure += "$field`, 
+        $procedure += "$field, 
         "
     }
     $procedure = $procedure.TrimEnd(", 
@@ -53,7 +56,7 @@ function create-Sql_Insert_Procedure($object, $fields)
     values ("
     foreach ($field in $fields)
     {
-        $procedure += "@$field` ,
+        $procedure += "@$field,
         "
     }    
     $procedure = $procedure.TrimEnd("
@@ -64,7 +67,9 @@ function create-Sql_Insert_Procedure($object, $fields)
 
 function create-PS_Object($Object, $fields)
 {
-$objectcreate = "$object  = New-Object -TypeName psobject
+
+$object_name = "`$"+$Object+"_Object"
+$objectcreate = "$object_name  = New-Object -TypeName psobject
 "
 foreach($field in $fields)
     {
